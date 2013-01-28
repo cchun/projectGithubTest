@@ -1,0 +1,26 @@
+2013/01/27 21:33:34 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\sigma_local\protected\controllers\SiteController.php:221)
+Stack trace:
+#0 C:\xampp\htdocs\yii13\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\yii13\framework\web\CController.php(286): SiteController->runAction()
+#2 C:\xampp\htdocs\yii13\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#3 C:\xampp\htdocs\yii13\framework\web\CWebApplication.php(282): SiteController->run()
+#4 C:\xampp\htdocs\yii13\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\yii13\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\sigma_local\index.php(13): CWebApplication->run()
+REQUEST_URI=/sigma_local/index.php?r=site/UpdateAjax&_=1359293613362
+in C:\xampp\htdocs\sigma_local\protected\controllers\SiteController.php (221)
+in C:\xampp\htdocs\sigma_local\protected\controllers\SiteController.php (185)
+in C:\xampp\htdocs\sigma_local\index.php (13)
+2013/01/27 21:33:36 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\sigma_local\protected\controllers\SiteController.php:221)
+Stack trace:
+#0 C:\xampp\htdocs\yii13\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\yii13\framework\web\CController.php(286): SiteController->runAction()
+#2 C:\xampp\htdocs\yii13\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#3 C:\xampp\htdocs\yii13\framework\web\CWebApplication.php(282): SiteController->run()
+#4 C:\xampp\htdocs\yii13\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\yii13\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\sigma_local\index.php(13): CWebApplication->run()
+REQUEST_URI=/sigma_local/index.php?r=site/UpdateAjax&_=1359293615361
+in C:\xampp\htdocs\sigma_local\protected\controllers\SiteController.php (221)
+in C:\xampp\htdocs\sigma_local\protected\controllers\SiteController.php (185)
+in C:\xampp\htdocs\sigma_local\index.php (13)
