@@ -1,30 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "tbl_user".
+ * This is the model class for table "tbl_project".
  *
- * The followings are the available columns in table 'tbl_user':
+ * The followings are the available columns in table 'tbl_project':
  * @property integer $id
- * @property string $email
- * @property string $username
- * @property string $password
- * @property string $last_login_time
+ * @property string $name
+ * @property string $description
  * @property string $create_time
  * @property integer $create_user_id
  * @property string $update_time
  * @property integer $update_user_id
- *
- * The followings are the available model relations:
- * @property Issue[] $issues
- * @property Issue[] $issues1
- * @property Project[] $tblProjects
  */
-class User extends CActiveRecord
+class Project extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return User the static model class
+	 * @return Project the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -36,7 +29,7 @@ class User extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'tbl_user';
+		return 'tbl_project';
 	}
 
 	/**
@@ -47,13 +40,13 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('email', 'required'),
+			array('name', 'required'), 
 			array('create_user_id, update_user_id', 'numerical', 'integerOnly'=>true),
-			array('email, username, password', 'length', 'max'=>256),
-			array('last_login_time, create_time, update_time', 'safe'),
+			array('name', 'length', 'max'=>128),
+			array('description, create_time, update_time', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, email, username, password, last_login_time, create_time, create_user_id, update_time, update_user_id', 'safe', 'on'=>'search'),
+			array('id, name, description, create_time, create_user_id, update_time, update_user_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,10 +58,10 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'issues' => array(self::HAS_MANY, 'Issue', 'requester_id'),
-			'issues1' => array(self::HAS_MANY, 'Issue', 'owner_id'),
-			'tblProjects' => array(self::MANY_MANY, 'Project', 'tbl_project_user_assignment(user_id, project_id)'),
-		);
+        'issues' => array(self::HAS_MANY, 'Issue', 'project_id'),
+        'users' => array(self::MANY_MANY, 'User', 
+                                     'tbl_project_user_assignment(project_id, user_id)'),
+    	);
 	}
 
 	/**
@@ -78,10 +71,8 @@ class User extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'email' => 'Email',
-			'username' => 'Username',
-			'password' => 'Password',
-			'last_login_time' => 'Last Login Time',
+			'name' => 'Name',
+			'description' => 'Description',
 			'create_time' => 'Create Time',
 			'create_user_id' => 'Create User',
 			'update_time' => 'Update Time',
@@ -101,10 +92,8 @@ class User extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('email',$this->email,true);
-		$criteria->compare('username',$this->username,true);
-		$criteria->compare('password',$this->password,true);
-		$criteria->compare('last_login_time',$this->last_login_time,true);
+		$criteria->compare('name',$this->name,true);
+		$criteria->compare('description',$this->description,true);
 		$criteria->compare('create_time',$this->create_time,true);
 		$criteria->compare('create_user_id',$this->create_user_id);
 		$criteria->compare('update_time',$this->update_time,true);
@@ -114,4 +103,14 @@ class User extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function getUserOptions() 
+	{
+	    $usersArray = CHtml::listData($this->users, 'id', 'username'); 
+	    return $usersArray;
+	}
 }
+
+
+
+

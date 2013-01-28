@@ -100,17 +100,15 @@ class SiteController extends Controller
 				$tbl_useron->online_name = Yii::app()->user->name;
 				$tbl_useron->online_time_now = date("YmdHis");
 				$tbl_useron->online_from_time = date("YmdHis");
-				$tbl_useron->save();
-				
+			//	$tbl_useron->save();
 				
 				$user = Yii::app()->user->name;
 				$namefrom = $user;
 				$nameto = "【系统消息】";
 				$content = $user."进入了聊天室!";
 			//	$this->render('test', array('para'=>$content));
-				$this->addToTblChatcont($namefrom, $nameto, $content);
+			//	$this->addToTblChatcont($namefrom, $nameto, $content);
 				$this->redirect(Yii::app()->user->returnUrl);
-			//	$this->render('test', array('para'=>"HHHHHHHHH"));
 			}	
 		}
 		// display the login form
@@ -132,7 +130,7 @@ class SiteController extends Controller
 		$namefrom = $user;
 		$nameto = "【系统消息】";
 		$content = $user."离开了聊天室!";
-		$this->addToTblChatcont($namefrom, $nameto, $content);
+	//	$this->addToTblChatcont($namefrom, $nameto, $content);
 		$this->redirect(Yii::app()->homeUrl);
 	}
 	
